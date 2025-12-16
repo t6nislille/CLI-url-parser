@@ -9,6 +9,10 @@ def read_url(file_path):
             name, url = line.strip().split("|")
             yield name, url
 
+# Check status code and request time
+def check_url():
+    pass
+
 # Make def main() into callable script
 @click.command()
 @click.option("-i", "--input-file", required=True, help="CSV file with URLs")
