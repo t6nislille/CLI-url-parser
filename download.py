@@ -2,10 +2,12 @@ import click
 import requests
 
 
+
+
 # Make def main() into callable script
 @click.command()
-@click.option("-i", "--input-file")
-def main(imput_files):
+@click.option("-i", "--input-file", required=True, help="CSV file with URLs")
+def main(input_file):
     pass
 
 # Invoke main()
