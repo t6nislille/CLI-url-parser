@@ -18,9 +18,9 @@ def check_url(name, url):
         response = requests.get(url,timeout=3)
         elapsed = round(time.time() - start, 2)
 
-        print(f"\"{name}\", HTTP {response.status_code}, time {elapsed} seconds")
+        print(f"\"{name}\", HTTP {response.status_code}, time {elapsed:.2f} seconds")
 
-    except requests.exeptions.RequestException:
+    except requests.exceptions.RequestException:
         print(f"Skipping {url}")
 
 # Make def main() into callable script
