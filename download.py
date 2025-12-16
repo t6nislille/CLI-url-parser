@@ -13,12 +13,15 @@ def read_url(file_path):
 
 # Check status code and request time
 def check_url(name, url):
-    start = time.time()
-    response = requests.get(url,timeout=3)
-    elapsed = round(time.time() - start, 2)
-    
-    print(f"\"{name}\", HTTP {response.status_code}, time {elapsed} seconds")
+    try:
+        start = time.time()
+        response = requests.get(url,timeout=3)
+        elapsed = round(time.time() - start, 2)
 
+        print(f"\"{name}\", HTTP {response.status_code}, time {elapsed} seconds")
+
+    except requests.exeptions.RequestException:
+        print(f"Skipping {url}")
 
 # Make def main() into callable script
 @click.command()
