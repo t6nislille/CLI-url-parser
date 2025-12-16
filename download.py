@@ -10,10 +10,12 @@ def read_url(file_path):
             name, url = line.strip().split("|")
             yield name, url
 
+
 # Check status code and request time
 def check_url(name, url):
-    response = requests.get(url)
+    response = requests.get(url,timeout=3)
     print(f"\"{name}\", HTTP {response.status_code}")
+
 
 # Make def main() into callable script
 @click.command()
@@ -21,6 +23,7 @@ def check_url(name, url):
 def main(input_file):
     for name, url in read_url(input_file):
         check_url(name, url)
+
 
 # Invoke main()
 if __name__ == "__main__":
