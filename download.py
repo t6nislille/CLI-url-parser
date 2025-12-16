@@ -1,5 +1,6 @@
 import click
 import requests
+import time
 
 
 # Read url from CSV fail
