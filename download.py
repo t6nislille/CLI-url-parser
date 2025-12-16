@@ -13,8 +13,11 @@ def read_url(file_path):
 
 # Check status code and request time
 def check_url(name, url):
+    start = time.time()
     response = requests.get(url,timeout=3)
-    print(f"\"{name}\", HTTP {response.status_code}")
+    elapsed = round(time.time() - start, 2)
+    
+    print(f"\"{name}\", HTTP {response.status_code}, time {elapsed} seconds")
 
 
 # Make def main() into callable script
