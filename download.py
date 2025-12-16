@@ -20,13 +20,13 @@ def read_url(file_path):
 def check_url(name, url):
     try:
         start = time.time()
-        response = requests.get(url,timeout=3)
+        response = requests.get(url,timeout=(3, 3))
         elapsed = time.time() - start
 
         print(f"\"{name}\", HTTP {response.status_code}, time {elapsed:.2f} seconds")
 
     except requests.exceptions.RequestException:
-        print(f"Skipping {url}")
+        print(f'"Skipping {url}"')
 
 # Make def main() into callable script
 @click.command()
