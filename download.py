@@ -10,15 +10,16 @@ def read_url(file_path):
             yield name, url
 
 # Check status code and request time
-def check_url():
-    pass
+def check_url(name, url):
+    response = requests.get(url)
+    print(f"\"{name}\", HTTP {response.status_code}")
 
 # Make def main() into callable script
 @click.command()
 @click.option("-i", "--input-file", required=True, help="CSV file with URLs")
 def main(input_file):
     for name, url in read_url(input_file):
-        print(f"\"{name}\" URL = {url}")
+        check_url(name, url)
 
 # Invoke main()
 if __name__ == "__main__":
