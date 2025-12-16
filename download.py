@@ -7,8 +7,13 @@ import time
 def read_url(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
-            name, url = line.strip().split("|")
-            yield name, url
+            line = line.strip()
+
+            if not line:
+                continue
+
+            name, url = line.split("|")
+            yield name.strip(), url.strip()
 
 
 # Check status code and request time
@@ -16,7 +21,7 @@ def check_url(name, url):
     try:
         start = time.time()
         response = requests.get(url,timeout=3)
-        elapsed = round(time.time() - start, 2)
+        elapsed = time.time() - start
 
         print(f"\"{name}\", HTTP {response.status_code}, time {elapsed:.2f} seconds")
 
