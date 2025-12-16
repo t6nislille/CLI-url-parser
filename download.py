@@ -6,7 +6,7 @@ import requests
 def read_url(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
-            name, url = line.strip()
+            name, url = line.strip().split("|")
             return name, url
 
 # Make def main() into callable script
