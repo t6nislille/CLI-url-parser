@@ -1,18 +1,19 @@
+import time
+import csv
+
 import click
 import requests
-import time
 
 
 # Read url from CSV fail
 def read_url(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-
-            if not line:
+    with open(file_path, newline="", encoding="utf-8") as f:
+        reader = csv.reader(f, delimiter="|")
+        for row in reader:
+            if not row:
                 continue
 
-            name, url = line.split("|")
+            name, url = row
             yield name.strip(), url.strip()
 
 
