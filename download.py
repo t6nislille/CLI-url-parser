@@ -30,7 +30,7 @@ def check_url(name, url):
         print(f'"Skipping {url}"')
 
 # Make def main() into callable script
-@click.command()
+@click.command(context_settings={"help_option_names": ["-h", "--help"]})
 @click.option("-i", "--input-file", required=True, help="CSV file with URLs")
 def main(input_file):
     for name, url in read_url(input_file):
